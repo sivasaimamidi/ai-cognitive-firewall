@@ -27,3 +27,6 @@ dependencies = [
 [project.urls]
 "Homepage" = "https://huggingface.co/spaces/MSSDK/ai-cognitive-firewall"
 "Bug Tracker" = "https://github.com/sivasaimamidi/ai-cognitive-firewall/issues"
+
+[project.scripts]
+server = "server.app:main"

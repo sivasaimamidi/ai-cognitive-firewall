@@ -44,6 +44,9 @@ async def serve_dashboard():
         return FileResponse(dashboard_path)
     return {"status": "Dashboard not found"}
 
-if __name__ == "__main__":
+def main():
     import uvicorn
     uvicorn.run(app, host=HOST, port=PORT, workers=1)
+
+if __name__ == "__main__":
+    main()
