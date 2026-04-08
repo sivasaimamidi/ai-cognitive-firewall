@@ -1,0 +1,28 @@
+name: "AI Cognitive Firewall Environment"
+version: "1.0.0"
+description: "A stateful RL environment for Meta x OpenEnv Hackathon simulating security challenges in tech workflows."
+author: "Antigravity Senior AI Developer"
+type: "security_simulator"
+
+# Environment Variables
+env:
+  WORKERS: 4
+  PORT: 8000
+  HOST: "0.0.0.0"
+  LOG_LEVEL: "info"
+
+# OpenEnv Specific Metadata
+openenv:
+  observation_schema: "models.Observation"
+  action_schema: "models.Action"
+  state_schema: "models.State"
+  tasks:
+    - id: "task_1"
+      name: "Prompt Injection"
+      difficulty: "easy"
+    - id: "task_2"
+      name: "Tool Output Attack"
+      difficulty: "medium"
+    - id: "task_3"
+      name: "Memory Poisoning"
+      difficulty: "hard"
