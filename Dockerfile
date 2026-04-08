@@ -23,6 +23,7 @@ EXPOSE 7860
 ENV WORKERS=1
 ENV PORT=7860
 ENV HOST=0.0.0.0
+ENV API_BASE_URL=http://localhost:7860
 
 # Start FastAPI server using uvicorn
 CMD ["uvicorn", "server.app:app", "--host", "0.0.0.0", "--port", "7860", "--workers", "1"]
