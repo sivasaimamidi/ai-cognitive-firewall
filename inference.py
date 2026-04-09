@@ -200,4 +200,5 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         evaluate_task(sys.argv[1])
     else:
-        evaluate_task("task_1")
+        print("Evaluating all AI Cognitive Firewall tasks...")
+        evaluate_all_tasks()
