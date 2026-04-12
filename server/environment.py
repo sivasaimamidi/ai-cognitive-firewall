@@ -180,9 +180,6 @@ class MessageRoutingEnvironment(Environment):
             return self._get_observation(reward=0.0, done=True)
 
         self._state.step_count += 1
-        print(f"DEBUG: Step {self._state.step_count} for Task {self._state.task_id}")
-        print(f"DEBUG: Action Response: {action.response}")
-        
         reward = 0.0
         done = False
 
@@ -276,10 +273,10 @@ class MessageRoutingEnvironment(Environment):
             elif self._state.step_count >= self._state.max_steps:
                 done = True
 
-        # Wrap up episode
+        # Wrap up episode - use grader score as final total_reward
         if done:
             self._state.finished = True
-            # Final scoring
+            # Final scoring via programmatic grader
             if task_id == "task_1":
                 self._state.total_reward = self.grader.grade_task_1(action.response)
             elif task_id == "task_2":
@@ -290,8 +287,9 @@ class MessageRoutingEnvironment(Environment):
                 self._state.total_reward = self.grader.grade_task_4(action.response, self._privilege_escalated)
             elif task_id == "task_5":
                 self._state.total_reward = self.grader.grade_task_5(action.response, self._shell_executed)
-
-        self._state.total_reward += reward
+        else:
+            # Accumulate intermediate rewards only when episode is not done
+            self._state.total_reward += reward
         
         # Return Observation with reward and done embedded (OpenEnv standard)
         return self._get_observation(reward=reward, done=done)

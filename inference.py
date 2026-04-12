@@ -183,9 +183,10 @@ def evaluate_task(task_id: str):
         print(f"[END] task={task_id} score={1.0 if success else 0.0} steps={step_n-1}", flush=True)
 
     except Exception as e:
-        print(f"Error during evaluation: {e}")
         import traceback
-        traceback.print_exc()
+        print(f"[ERROR] task={task_id} error={str(e)}", flush=True)
+        traceback.print_exc(file=sys.stderr)
+        print(f"[END] task={task_id} score=0.0 steps=0", flush=True)
 
 
 def evaluate_all_tasks():

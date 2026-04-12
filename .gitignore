@@ -35,6 +35,7 @@ Thumbs.db
 *.log
 server_crash_log.txt
 server_log.txt
+server_debug.log
 
 # Large files
 *.pdf
